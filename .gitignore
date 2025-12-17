@@ -1,64 +1,58 @@
-# =========== TERRAFORM ===========
-# NEVER commit Terraform state or cache
-.terraform/
-*.tfstate
-*.tfstate.*
-terraform.tfstate.backup
-
-# =========== PYTHON ===========
-# NEVER commit Python packages or bytecode
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*.class
+*.so
 .Python
-venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# =========== CLOUD FUNCTION DEPENDENCIES ===========
-# These are installed during build - DO NOT COMMIT
-src/function/ydb*/
-src/function/boto3*/
-src/function/aiohttp*/
-src/function/grpc*/
-src/function/protobuf*/
-src/function/google*/
-src/function/urllib3*/
-src/function/idna*/
-src/function/yarl*/
-src/function/multidict*/
-src/function/frozenlist*/
-src/function/aiosignal*/
-src/function/aiohappyeyeballs*/
-src/function/propcache*/
-src/function/s3transfer*/
-src/function/jmespath*/
-src/function/six.py
-src/function/dateutil*/
-src/function/attrs*/
-src/function/packaging*/
-src/function/typing_extensions.py
-src/function/charset_normalizer*/
-src/function/certifi*/
-src/function/*.dist-info/
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# =========== BUILD ARTIFACTS ===========
-src/function/function.zip
+# Package dependencies
+src/function/package/
+src/function/botocore/
+src/function/boto3/
 
-# =========== SECRETS ===========
-# NEVER commit tokens or secrets
-variables.tf    # If it contains real YC_TOKEN
-*.env
-*.key
-*.pem
+# AWS Lambda layers
+layer/
 
-# =========== IDE/EDITOR ===========
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# =========== OPERATING SYSTEM ===========
+# OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
-EOF
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars

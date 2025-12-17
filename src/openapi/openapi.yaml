@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title: Document Processing API
+  description: "API for document processing system. Student: Факи Доосууур Дорис (faki)"
+  version: 1.0.0
+
+paths:
+  /upload:
+    post:
+      x-yc-apigateway-integration:
+        type: cloud_ymq
+        action: SendMessage
+        queue_id: ${queue_id}
+        queue_url: ${queue_id}
+        folder_id: ${folder_id}
+        service_account_id: ${sa_id}
+
+  /documents:
+    get:
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id: ${function_id}
+        service_account_id: ${sa_id}
+
+  /document/{key}:
+    get:
+      parameters:
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      x-yc-apigateway-integration:
+        type: object_storage
+        bucket: "${yandex_storage_bucket.bucket.id}"
+        object: "{key}"
+        service_account_id: "${yandex_iam_service_account.sa.id}"
+
+
