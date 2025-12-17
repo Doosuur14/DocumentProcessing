@@ -1,0 +1,64 @@
+# =========== TERRAFORM ===========
+# NEVER commit Terraform state or cache
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfstate.backup
+
+# =========== PYTHON ===========
+# NEVER commit Python packages or bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+*.egg-info/
+
+# =========== CLOUD FUNCTION DEPENDENCIES ===========
+# These are installed during build - DO NOT COMMIT
+src/function/ydb*/
+src/function/boto3*/
+src/function/aiohttp*/
+src/function/grpc*/
+src/function/protobuf*/
+src/function/google*/
+src/function/urllib3*/
+src/function/idna*/
+src/function/yarl*/
+src/function/multidict*/
+src/function/frozenlist*/
+src/function/aiosignal*/
+src/function/aiohappyeyeballs*/
+src/function/propcache*/
+src/function/s3transfer*/
+src/function/jmespath*/
+src/function/six.py
+src/function/dateutil*/
+src/function/attrs*/
+src/function/packaging*/
+src/function/typing_extensions.py
+src/function/charset_normalizer*/
+src/function/certifi*/
+src/function/*.dist-info/
+
+# =========== BUILD ARTIFACTS ===========
+src/function/function.zip
+
+# =========== SECRETS ===========
+# NEVER commit tokens or secrets
+variables.tf    # If it contains real YC_TOKEN
+*.env
+*.key
+*.pem
+
+# =========== IDE/EDITOR ===========
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========== OPERATING SYSTEM ===========
+.DS_Store
+Thumbs.db
+EOF
